@@ -46,7 +46,7 @@ async function predict() {
 
     try {
 
-        const response = await fetch("http://localhost:8000/predict", {
+        const response = await fetch("https://ai-studyplanner-8.onrender.com", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
@@ -121,4 +121,5 @@ function updateChart(productivity, fatigue) {
 
     chart.update();
 }
+
 
