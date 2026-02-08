@@ -9,6 +9,7 @@ encoder = joblib.load(BASE_DIR / "label_encoder.pkl")
 history = pd.read_csv(BASE_DIR / "burnout_features.csv")
 
 
+
 OPTIMAL_SLEEP = 7.5
 
 st.set_page_config(
@@ -64,7 +65,7 @@ canvas {
 
 </style>
 """, unsafe_allow_html=True)
-# ===========================================================
+
 
 st.title(APP_TITLE)
 st.caption("Behavioral ML • Productivity Intelligence • Adaptive Planning")
@@ -235,6 +236,7 @@ trend = history.tail(14)[
 st.line_chart(trend)
 
 st.caption("AI Study Planner | Monochrome Edition")
+
 
 
 
