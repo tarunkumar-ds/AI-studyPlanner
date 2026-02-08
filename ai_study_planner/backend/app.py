@@ -1,14 +1,13 @@
-import streamlit as st
-import pandas as pd
-import joblib
-import numpy as np
 from pathlib import Path
+import joblib
+import pandas as pd
 
-APP_TITLE = "AI Study Planner with Burnout Detection"
-PAGE_ICON = "👨‍🎓"
-MODEL_PATH = Path("burnout_model.pkl")
-ENCODER_PATH = Path("label_encoder.pkl")
-HISTORY_PATH = Path("burnout_features.csv")
+BASE_DIR = Path(__file__).resolve().parent
+
+model = joblib.load(BASE_DIR / "burnout_model.pkl")
+encoder = joblib.load(BASE_DIR / "label_encoder.pkl")
+history = pd.read_csv(BASE_DIR / "burnout_features.csv")
+
 
 OPTIMAL_SLEEP = 7.5
 
@@ -236,6 +235,7 @@ trend = history.tail(14)[
 st.line_chart(trend)
 
 st.caption("AI Study Planner | Monochrome Edition")
+
 
 
 
