@@ -7,7 +7,7 @@ import numpy as np
 
 app = FastAPI(title="AI Study Planner API")
 
-# Enable CORS for frontend
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -16,7 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load model + encoder + history
+
 model = joblib.load("burnout_model.pkl")
 encoder = joblib.load("label_encoder.pkl")
 history = pd.read_csv("burnout_features.csv")
@@ -24,7 +24,7 @@ history = pd.read_csv("burnout_features.csv")
 OPTIMAL_SLEEP = 7.5
 
 
-# -------- Request Schema --------
+
 class StudyInput(BaseModel):
     study_hours: float
     break_hours: float
@@ -33,7 +33,7 @@ class StudyInput(BaseModel):
     focus: int
 
 
-# -------- Helpers --------
+
 def calculate_fatigue(study, sleep, stress):
     return (stress * study) / max(sleep, 1)
 
@@ -72,7 +72,7 @@ def compute_productivity(study, sleep, stress, focus, consistency):
     )
 
 
-# -------- API --------
+
 @app.post("/predict")
 def predict(data: StudyInput):
 
@@ -111,3 +111,4 @@ def predict(data: StudyInput):
         "fatigue": round(fatigue, 2),
         "productivity": productivity
     }
+
