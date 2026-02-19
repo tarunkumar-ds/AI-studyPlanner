@@ -123,3 +123,4 @@ function updateChart(productivity, fatigue) {
 }
 
 
+
